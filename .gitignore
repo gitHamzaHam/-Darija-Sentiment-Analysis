@@ -1,3 +1,4 @@
-"models/xlm_roberta_darija/" 
-"models/xlm_roberta_darija/" 
-"models/xlm_roberta_darija/" 
+models/xlm_roberta_darija/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

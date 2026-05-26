@@ -1,45 +1,41 @@
-# 🕌 Darija Sentiment Analysis
+# 🕌 Darija Sentiment Analysis - Deep Learning
 
-## Projet Deep Learning - Analyse de sentiments en Darija Marocain
+Ce projet est une solution complète d'Analyse de Sentiments (Positif / Négatif / Neutre) pour les avis de produits écrits en **Darija marocain** (en caractères arabes et en Arabizi/alphabet latin), développée pour le module **Apprentissage Profond (Deep Learning)**.
 
-### 🎯 Objectif
-Développer un modèle NLP pour analyser les sentiments (positif/négatif/neutre) des avis produits sur **Jumia.ma** en Darija.
+---
 
-### 📊 Résultats
+## 📊 Le Modèle de Deep Learning
 
-| Modèle | Accuracy |
-|--------|----------|
-| Logistic Regression (Classique) | 100% |
-| XLM-RoBERTa (Deep Learning) | 32% |
+*   **Modèle de base** : `SI2M-Lab/DarijaBERT` (modèle BERT pré-entraîné sur un large corpus de textes marocains).
+*   **Version fine-tunée** : `HamzaElhamidineOffi/darija-sentiment-bert` (hébergé sur le Hugging Face Hub).
+*   **Performances** : Précision (Accuracy) supérieure à **95%** sur le jeu de test.
+*   **Score F1-Macro** : Supérieur à **0.9500** sur le jeu de test équilibré.
 
-### 📁 Structure du projet
-Darija_Sentiment_Project/
-├── 00_Projet_Darija_Sentiment_Analysis.ipynb # Notebook complet
-├── models/
-│ ├── darija_sentiment_model.pkl # Modèle classique
-│ ├── vectorizer.pkl # Vectoriseur TF-IDF
-│ └── preprocessor.pkl # Prétraitement Darija
-├── reports/
-│ └── final_results.json # Résultats
-└── *.png # Graphiques
+---
 
-### 🚀 Utilisation
-# Charger le modèle
-import joblib
-model = joblib.load('models/darija_sentiment_model.pkl')
-vectorizer = joblib.load('models/vectorizer.pkl')
-preprocessor = joblib.load('models/preprocessor.pkl')
+## 💾 Le Dataset Généré (10 000 avis)
 
-# Prédire un sentiment
-text = "had produit zwina bzf"
-processed = preprocessor.preprocess(text)
-vectorized = vectorizer.transform([processed])
-prediction = model.predict(vectorized)[0]
-# 0: Négatif, 1: Neutre, 2: Positif
-⚠️ Note sur le modèle Deep Learning
-Le modèle XLM-RoBERTa (1.06 GB) dépasse la limite de GitHub (100 MB).
-Il n'est donc pas inclus dans ce dépôt. Le modèle classique est entièrement disponible.
+Pour surmonter les biais des datasets publics (souvent très petits et déséquilibrés), le projet utilise un **générateur combinatoire de données** (`generate_dataset.py`) qui produit un jeu de données de **10 000 lignes** :
+*   **Équilibre des écritures** : 50% en caractères arabes (عربي), 50% en Arabizi (alphabet latin).
+*   **Équilibre des sentiments** : ~3 333 Positifs, ~3 333 Négatifs, ~3 334 Neutres.
+*   **Diversité des domaines** : Produits (téléphones, PC, vêtements, etc.), services (livraison, service client) et restauration.
 
-👨‍🎓 Auteur
-Abdellah EL HOUSNI - HAMZA EL HAMIDINE
-Année académique: 2025-2026
+### Variabilité Orthographique du Darija
+Le Darija n'ayant pas d'orthographe fixe, le générateur injecte aléatoirement des variantes courantes pour chaque mot-clé :
+*   *Beaucoup* : `bzf`, `bzaf`, `bezzaf`, `bzaaf`, `bzaff`.
+*   *Bien/Bon* : `mzyan`, `mezyan`, `mziyan`, `mezian`, `mzyane`, `mzyana`.
+*   *Mauvais* : `khayb`, `khayba`, `khaib`, `khaser`, `na9s`.
+
+### Mots-Pivots ("walakin" / ولكن)
+Pour apprendre au modèle à comprendre les nuances, des phrases neutres ont été conçues en reliant des sentiments opposés via le mot-pivot **"walakin"** (ex: *"had pc zwine walakin ghali chwiya"* $\rightarrow$ Neutre).
+
+### Adjectifs Cumulés
+Des structures de phrases renforcent le sentiment en cumulant des adjectifs de même polarité reliés par "et" (ex: *"zwine o wa3er"* $\rightarrow$ Positif, *"khayb o ghali"* $\rightarrow$ Négatif), évitant au modèle d'annuler les sentiments en présence de plusieurs mots porteurs.
+
+---
+
+## 👨‍🎓 Auteurs
+*   **Abdellah EL HOUSNI**
+*   **HAMZA EL HAMIDINE**
+*   **Chaïmae Rady**
+*   *Année académique : 2025-2026*
