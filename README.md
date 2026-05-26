@@ -36,7 +36,7 @@ Des structures de phrases renforcent le sentiment en cumulant des adjectifs de m
 
 ## 🚀 Utilisation
 
-### 1. Tester l'application Streamlit (Localement)
+### Tester l'application Streamlit (Localement)
 Pour lancer l'interface web interactive locale et tester le modèle :
 1.  Installez les dépendances nécessaires :
     ```bash
@@ -44,37 +44,9 @@ Pour lancer l'interface web interactive locale et tester le modèle :
     ```
 2.  Démarrez le serveur Streamlit :
     ```bash
-    streamlit run app.py
+    streamlit run app.py // ou // python -m streamlit run app.py  
     ```
     *Note : Lors de la première prédiction, le modèle sera téléchargé depuis Hugging Face et mis en cache automatiquement.*
-
-### 2. Ré-entraîner le modèle (Google Colab)
-Si vous souhaitez ré-entraîner le modèle sur le jeu de données de 10 000 lignes :
-1.  Ouvrez un notebook sur **Google Colab** et activez le **GPU T4** gratuit.
-2.  Installez les bibliothèques requises :
-    ```python
-    !pip install transformers torch pandas scikit-learn huggingface_hub datasets accelerate
-    ```
-3.  Générez le dataset directement sur Colab (ou importez `darija_dataset_10k.csv`) :
-    *   Copiez le code de `generate_dataset.py` et lancez-le :
-        ```bash
-        !python generate_dataset.py
-        ```
-4.  Lancez le fine-tuning et l'upload automatique vers Hugging Face :
-    *   Importez le script `train_fine_tune.py` et exécutez la configuration suivante :
-        ```python
-        import sys
-        sys.argv = [
-            '',
-            '--local_csv', 'darija_dataset_10k.csv',
-            '--epochs', '3',
-            '--batch_size', '16',
-            '--hf_token', 'VOTRE_TOKEN_HF_WRITE',
-            '--hf_repo', 'VOTRE_NOM_D_UTILISATEUR/darija-sentiment-bert'
-        ]
-        from train_fine_tune import main
-        main()
-        ```
 
 ---
 
