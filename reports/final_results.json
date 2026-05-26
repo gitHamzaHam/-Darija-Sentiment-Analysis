@@ -1,7 +1,0 @@
-{
-  "classic_model": "Logistic Regression",
-  "classic_accuracy": 1.0,
-  "deep_model": "XLM-RoBERTa",
-  "deep_accuracy": 0.3181818181818182,
-  "improvement_percent": -68.18181818181819
-}
