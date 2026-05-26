@@ -29,6 +29,25 @@ Le Darija n'ayant pas d'orthographe fixe, le générateur injecte aléatoirement
 ### Mots-Pivots ("walakin" / ولكن)
 Pour apprendre au modèle à comprendre les nuances, des phrases neutres ont été conçues en reliant des sentiments opposés via le mot-pivot **"walakin"** (ex: *"had pc zwine walakin ghali chwiya"* $\rightarrow$ Neutre).
 
+### Adjectifs Cumulés
+Des structures de phrases renforcent le sentiment en cumulant des adjectifs de même polarité reliés par "et" (ex: *"zwine o wa3er"* $\rightarrow$ Positif, *"khayb o ghali"* $\rightarrow$ Négatif), évitant au modèle d'annuler les sentiments en présence de plusieurs mots porteurs.
+
+---
+
+## 🚀 Utilisation
+
+### Tester l'application Streamlit (Localement)
+Pour lancer l'interface web interactive locale et tester le modèle :
+1.  Installez les dépendances nécessaires :
+    ```bash
+    pip install -r requirements.txt
+    ```
+2.  Démarrez le serveur Streamlit :
+    ```bash
+    streamlit run app.py // ou // python -m streamlit run app.py  
+    ```
+    *Note : Lors de la première prédiction, le modèle sera téléchargé depuis Hugging Face et mis en cache automatiquement.*
+
 ---
 
 ## 👨‍🎓 Auteurs
