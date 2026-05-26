@@ -1,6 +1,6 @@
 # 🕌 Darija Sentiment Analysis - Deep Learning
 
-Ce projet est une solution complète d'Analyse de Sentiments (Positif / Négatif / Neutre) pour les avis de produits écrits en **Darija marocain** (en caractères arabes et en Arabizi/alphabet latin), développée pour le module **Apprentissage Profond (Deep Learning)**.
+Ce projet est une solution complète d'Analyse de Sentiments (Positif / Négatif / Neutre) pour les avis de produits écrits en **Darija marocain** (en caractères arabes et en Arabizi/alphabet latin), **Apprentissage Profond (Deep Learning)**.
 
 ---
 
