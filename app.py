@@ -213,7 +213,7 @@ def main():
             st.session_state.text_input = "التوصيل تعطل بزاف والسلعة ناقصة"
             
     with cols[2]:
-        st.markdown("**🟡 Avis Neutres (avec pivot)**")
+        st.markdown("**🟡 Avis Neutres**")
         if st.button("produit cher (Arabizi)", key="btn_neu_1"):
             st.session_state.text_input = "lproduit zwine walakin ghali chwiya"
         if st.button("تليفون عادي (Arabe)", key="btn_neu_2"):
@@ -265,7 +265,7 @@ def main():
                     st.markdown(f"""
                         <div class="result-card neu-card">
                             <h3>🟡 Sentiment Neutre / Mitigé</h3>
-                            <p>Le modèle a détecté un sentiment nuancé (ex: avis contenant 'walakin').</p>
+                            <p>Le modèle a détecté un sentiment nuancé.</p>
                             <span class="custom-badge badge-neu">Confiance : {score:.2%}</span>
                         </div>
                     """, unsafe_allow_html=True)
